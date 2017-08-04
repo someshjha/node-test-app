@@ -11,8 +11,15 @@ socket.on('connect', function () {
     //     from: 'Jlo',
     //     text: 'sup sup sup'
     // });
-
     
+    // socket.emit('newUser', {});
+    // socket.on('welcomeMessage', function(message) {
+    //     console.log(message);
+    // });
+
+    // socket.on('newUser', function(message) {
+    //     console.log(message);
+    // });
 });
 
 socket.on('disconnect', function () {

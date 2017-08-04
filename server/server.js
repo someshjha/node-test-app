@@ -35,6 +35,25 @@ io.on('connection', (socket) => {
     //     createdAt: 1234
     // });
 
+
+
+
+
+
+    socket.emit('newMessage', {
+        from: 'Admin',
+        text: 'Welcome to the chat app',
+        createdAt: new Date().getTime()
+    });
+
+    socket.broadcast.emit('newMessage', {
+        from: 'admin',
+        text: 'New User joined',
+        createdAt: new Date().getTime()
+    });
+
+
+
     socket.on('createMessage', (message) => {
         console.log('createMessage', message);
         // emit message to all the users 
@@ -42,7 +61,12 @@ io.on('connection', (socket) => {
             from: message.from,
             text: message.text,
             createdAt: new Date().getTime()
-        })
+        });
+        // socket.broadcast.emit('newMessage', {
+        //     from: message.from,
+        //     text: message.text,
+        //     createdAt: new Date().getTime()
+        // });
     });
 
     socket.on('disconnect', () => {
@@ -54,7 +78,7 @@ server.listen(port, () => {
     console.log(`Started on port ${port}`);
 });
 
-module.exports = {app};
+module.exports = { app };
 
 // behind the scene app.listen()
 // ver server = http.createServer(app);
