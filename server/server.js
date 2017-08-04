@@ -29,14 +29,20 @@ io.on('connection', (socket) => {
     //     console.log('createEmail', newEmail);
     // });
 
-    socket.emit('newMessage', {
-        from: 'sjha',
-        text: 'Sup',
-        createdAt: 1234
-    })
+    // socket.emit('newMessage', {
+    //     from: 'sjha',
+    //     text: 'Sup',
+    //     createdAt: 1234
+    // });
 
     socket.on('createMessage', (message) => {
         console.log('createMessage', message);
+        // emit message to all the users 
+        io.emit('newMessage', {
+            from: message.from,
+            text: message.text,
+            createdAt: new Date().getTime()
+        })
     });
 
     socket.on('disconnect', () => {
