@@ -11,7 +11,7 @@ socket.on('connect', function () {
     //     from: 'Jlo',
     //     text: 'sup sup sup'
     // });
-    
+
     // socket.emit('newUser', {});
     // socket.on('welcomeMessage', function(message) {
     //     console.log(message);
@@ -26,8 +26,8 @@ socket.on('disconnect', function () {
     console.log('Disconnected from server.');
 });
 
-socket.on('newMessage', function(newMessage) {
-        console.log('NewMessage' ,newMessage);
+socket.on('newMessage', function (newMessage) {
+    console.log('NewMessage', newMessage);
 });
 
 // socket.on('newEmail', function(email) {
