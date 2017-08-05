@@ -47,7 +47,7 @@ io.on('connection', (socket) => {
 
 
 
-    socket.on('createMessage', (message) => {
+    socket.on('createMessage', (message, callback) => {
         console.log('createMessage', message);
         // emit message to all the users 
         io.emit('newMessage', generateMessage(message.from, message.text));
@@ -56,6 +56,7 @@ io.on('connection', (socket) => {
         //     text: message.text,
         //     createdAt: new Date().getTime()
         // });
+        callback('This is from the server');
     });
 
     socket.on('disconnect', () => {
